@@ -42,7 +42,7 @@ jobs:
           architecture: 'x64'
 
       - name: files list
-        run: ls ${{ github.workspace }}
+        run: ls /home/runner/work/schedule-tasks
 
       - name: Install Dependencies
         run: |
