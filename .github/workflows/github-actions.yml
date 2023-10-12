@@ -37,6 +37,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
@@ -44,7 +47,7 @@ jobs:
           architecture: 'x64'
 
       - name: Files list
-        run: ls /home/runner/work/schedule-tasks
+        run: ls ${{ github.workspace }}
 
       - name: Install dependencies
         run: |
