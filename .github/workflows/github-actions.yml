@@ -44,8 +44,8 @@ jobs:
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
-          copy requirements.txt /tmp/
-          pip install --requirement /tmp/requirements.txt
+          ls ${{ github.workspace }}
+          pip install -r ${{ github.workspace }}/requirements.txt
 
       - name: Display Projects Info
         run: |
