@@ -1,5 +1,5 @@
 name: GitHub Actions Study
-run-name: running script 🤖
+run-name: Running Script 🤖
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
       - main
 
   schedule:
-    - cron: 20 7 * * 1
+    - cron: '0 16 * * *'
 
 jobs:
   collecting-data:
@@ -26,12 +26,10 @@ jobs:
           echo "🖥️ The workflow is now ready to test your code on the runner."
 
       - name: List files in the repository
-        run: |
-          ls ${{ github.workspace }}
+        run: ls ${{ github.workspace }}
 
       - name: Display job's status
-        run: |
-          echo "🍏 This job's status is ${{ job.status }}."
+        run: echo "🍏 This job's status is ${{ job.status }}."
 
   build:
     runs-on: ubuntu-latest
@@ -45,9 +43,6 @@ jobs:
         with:
           python-version: '3.x'
           architecture: 'x64'
-
-      - name: Files list
-        run: ls ${{ github.workspace }}
 
       - name: Install dependencies
         run: |
