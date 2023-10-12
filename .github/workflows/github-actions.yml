@@ -1,6 +1,5 @@
 name: GitHub Actions Study
-
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+run-name: running script 🤖
 
 on: [push]
 
@@ -9,21 +8,50 @@ on: [push]
 #     - cron: 20 07 * * 1
 
 jobs:
-  Schedule-Task:
+  collecting-data:
     runs-on: ubuntu-latest
 
     steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - run: echo "🔎 This is running in branch ${{ github.ref }}, in repository ${{ github.repository }}."
-
       - name: Check out repository code
         uses: actions/checkout@v4
 
-      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+      - name: Displaying job's informations
+        run: |
+          echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+          echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+          echo "🔎 This is running in branch ${{ github.ref }}, in repository ${{ github.repository }}."
+          echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+          echo "🖥️ The workflow is now ready to test your code on the runner."
 
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
-      - run: echo "🍏 This job's status is ${{ job.status }}."
+
+      - name: Display job's status
+        run: |
+          echo "🍏 This job's status is ${{ job.status }}."
+
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+          architecture: 'x64'
+
+      - uses: BSFishy/pip-action@v1
+        with:
+          requirements: requirements.txt
+
+      - name: Display Projects Info
+        run: |
+          python -c "import sys; print(sys.version)"
+          pip freeze
+
+      # - name: Set-up Environment
+      #   run: |
+      #     python -m venv .venv
+      #     .\.venv\Scripts\activate
+      #     pip install -r .\requirements.txt
+
