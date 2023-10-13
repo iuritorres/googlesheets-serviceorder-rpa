@@ -2,8 +2,6 @@ from __future__ import print_function
 
 import os.path
 
-from dotenv import load_dotenv
-
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
@@ -13,8 +11,6 @@ from googleapiclient.errors import HttpError
 
 class GoogleSheet:
 	def __init__(self, spreadsheet_id: str, scopes: list[str]) -> None:
-		load_dotenv()
-
 		self.__credentials = None
 		self.spreadsheet_id = spreadsheet_id
 		self.SCOPES = scopes
