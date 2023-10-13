@@ -1,5 +1,5 @@
-name: GitHub Actions Study
-run-name: Running Script 🤖
+name: Execute Google Sheets RPA
+run-name: Initializing Data Manipulation 📊
 
 on: [fork]
   # push:
