@@ -1,10 +1,10 @@
 name: GitHub Actions Study
 run-name: Running Script 🤖
 
-on:
-  push:
-    branches:
-      - main
+on: [fork]
+  # push:
+  #   branches:
+  #     - main
 
   # schedule:
   #   - cron: '*/5 * * * *'
